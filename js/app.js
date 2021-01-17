@@ -3,7 +3,7 @@ $(function() {
 	$('#my-menu').mmenu({
         extensions: ['theme-black', 'effect-menu-slide', 'pagedim-black', 'position-right'],
         navbar:{
-            title: '<img src="../img/dest/logo/logo-1.svg" alt="Салон красоты">'
+            title: '<img src="img/dest/logo/logo-1.svg" alt="Салон красоты">'
         }
     });
     
