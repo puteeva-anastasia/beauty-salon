@@ -60,5 +60,23 @@ $(function () {
     $('section .h2').each(function(){
         $(this).html($(this).html().replace(/^(\S+)/,'<span>$1</span>'));
     })
+    
+    /*$('select').selectize();*/
+    
+    //E-mail Ajax Send
+	$("form.callback").submit(function() { 
+		$.ajax({
+			type: "POST",
+			url: "mail.php", 
+			data: $(this).serialize()
+		}).done(function() {
+			$($(this)).find('callback-success').addClass('active').css('display', 'flex').hide().fadeIn();
+			setTimeout(function() {
+                $($(this)).find('callback-success').removeClass('active').fadeOut();
+				$(this).trigger("reset");
+			}, 3000);
+		});
+		return false;
+	});
 
 });
