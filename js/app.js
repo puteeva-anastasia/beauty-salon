@@ -38,6 +38,13 @@ $(function () {
             }
         }
     });
+    
+    $('.reviews').owlCarousel({
+        loop: true,
+        items: 1,
+        smartSpeed: 700,
+        autoplay:true
+    });
 
     function carouselService() {
         $('.carousel-services-item').each(function () {
@@ -56,25 +63,26 @@ $(function () {
     window.onresize = function () {
         onResize()
     };
-    
-    $('section .h2').each(function(){
-        $(this).html($(this).html().replace(/^(\S+)/,'<span>$1</span>'));
+
+    $('section .h2').each(function () {
+        $(this).html($(this).html().replace(/^(\S+)/, '<span>$1</span>'));
     })
-    
-    /*$('select').selectize();*/
-    
+
+    $('select').selectize();
+
     //E-mail Ajax Send
-	$("form.callback").submit(function() { 
+	$("form.callback-form").submit(function() { //Change
+		var th = $(this);
 		$.ajax({
 			type: "POST",
-			url: "mail.php", 
-			data: $(this).serialize()
+			url: "mail.php", //Change
+			data: th.serialize()
 		}).done(function() {
-			$($(this)).find('callback-success').addClass('active').css('display', 'flex').hide().fadeIn();
+			alert("Thank you!");
 			setTimeout(function() {
-                $($(this)).find('callback-success').removeClass('active').fadeOut();
-				$(this).trigger("reset");
-			}, 3000);
+				// Done Functions
+				th.trigger("reset");
+			}, 1000);
 		});
 		return false;
 	});

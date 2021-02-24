@@ -177,7 +177,7 @@
                     </div>
                 </div>
             </section>
-            <section class="s-about section-overlay white" style="background-image: url(img/dest/bg/bg-1.jpg);">
+            <section class="s-about section-overlay" style="background-image: url(img/dest/bg/bg-1.jpg);">
                 <div class="container content">
                     <div class="row">
                         <div class="col-lg-5">
@@ -201,37 +201,87 @@
             <section class="s-call" style="background-image: url(img/dest/bg/bg-2.jpg)">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-5 offset-lg-7">
-                            <form action="" class="callback">
-                               
-                                <div class="callback-success">
-                                    <span>Спасибо за заявку!</span>
-                                </div>
-                                
+                        <div class="col-lg-5 offset-lg-7 col-md-8 col-sm-11 callback">
+
+                            <div class="callback-success">
+                                <span>Спасибо за заявку!</span>
+                            </div>
+
+                            <img src="img/dest/logo/logo-2.svg" alt="Салон красоты" class="callback-logo">
+                            <span class="formhead">Оставить заявку</span>
+                            <p>Оставьте заявку и мы перезвоним Вам в течение 15 минут.</p>
+
+                            <form class="callback-form">
+
                                 <!-- Hidden Required Fields -->
                                 <input type="hidden" name="project_name" value="S&Beauty">
                                 <input type="hidden" name="admin_email" value="anastasiaputeeya@gmail.com">
                                 <input type="hidden" name="form_subject" value="Заявка с сайта S&Beauty">
-                                <!-- Hidden Required Fields -->
-                                
+                                <!-- END Hidden Required Fields -->
+
                                 <input type="hidden" name="Страница" value="">
-                                
-                                <img src="img/dest/logo/logo-2.svg" alt="Салон красоты" class="callback-logo">
-                                <span class="formhead">Оставить заявку</span>
-                                <p>Оставьте заявку и мы перезвоним Вам в течение 15 минут.</p>
-                                
-                                <input type="text" name="Имя" placeholder="Ваше имя..." required>
-                                <input type="text" name="Телефон" placeholder="Ваш телефон..." required>
+
+                                <input type="text" name="Имя" placeholder="Ваше имя..." required autocomplete="off">
+                                <input type="text" name="Телефон" placeholder="Ваш телефон..." required autocomplete="off">
                                 <select name="Услуга">
+                                    <option value disabled selected>Выбрать услугу...</option>
                                     <option>Парикмахерская</option>
                                     <option>Брови и ресницы</option>
                                     <option>Nail-сервис</option>
                                     <option>Косметология</option>
                                     <option>SPA, массаж</option>
                                 </select>
-                                <button class="button button-white">Отправить</button>
-                    
+                                <div class="adding-item adding-item-white">
+                                    <input type="button" class="button button-white" value="Отправить">
+                                </div>
                             </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="s-review section-overlay" style="background-image: url(img/dest/bg/bg-3.jpg);">
+                <div class="container content">
+                    <div class="row">
+                        <div class="col-lg-8 offset-lg-2">
+                            <h2 class="h2">Отзывы наших клиентов</h2>
+                            <div class="owl-carousel reviews">
+                                <div class="review">
+                                    <span class="review-name">Наталья</span>
+                                    <span class="review-desc">15.05.2020 (Маникюр)</span>
+                                    <div class="review-stars">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <p class="review-txt">Сегодня была в салоне, очень все понравилось: чистота, приветливый персонал, теплая и по-семейному добрая атмосфера. Качество оказываемых услуг — наивысшее! Отдельное спасибо Маше за маникюр. Обязательно вернусь снова.</p>
+                                </div>
+                                <div class="review">
+                                    <span class="review-name">Ольга</span>
+                                    <span class="review-desc">21.09.2020 (Маникюр, педикюр)</span>
+                                    <div class="review-stars">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <p class="review-txt">Хочется искренне поблагодарить администрацию и мастеров салона за их профессионализм и внимание к клиентам. В данном салоне красоты всё очень понравилось: начиная от уютного интерьера, вежливых администраторов и заканчивая великолепной по своему мастерству работой мастера по маникюру-педикюру Алиной. Уже три недели и ручки, и ножки в полном порядке. Огромное спасибо данному мастеру. Всем рекомендую.</p>
+                                </div>
+                                <div class="review">
+                                    <span class="review-name">Тамара</span>
+                                    <span class="review-desc">29.06.2020 (Комплекс услуг)</span>
+                                    <div class="review-stars">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <p class="review-txt">На день рождения подарили маме сертификат на комплексное обслуживание в данном салоне. Маме всё очень понравилось, особенно дружелюбный коллектив и отличное отношение к клиентам. Большое вам спасибо за то, что оправдали надежды. Рекомендую!</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
