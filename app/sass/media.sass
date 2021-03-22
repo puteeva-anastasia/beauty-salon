@@ -1,0 +1,214 @@
+@import "variables"
+    
+@media only screen and (max-width: 1200px)
+    .header-composition
+        .welcome
+            .h1
+                font-size: 65px
+                
+    .header-contacts
+        font-size: 14px
+    .carousel-services
+        &-item
+            flex-direction: column
+        &-image
+            display: none
+    .s
+        &-about, &-partners, &-review
+            padding: 7% 0
+        &-about
+            p    
+                display: none
+                &:nth-child(2)
+                    display: block
+    
+    .footer-phone
+        font-size: 23px
+        &::before
+            left: 4px
+            top: -1px
+
+                
+@media only screen and (max-width: 992px)
+    .header-composition 
+        .welcome 
+            .h1
+                font-size: 55px
+    .fotorama
+        margin-left: 0
+        margin-top: 25px
+    
+    .s
+        &-about
+            p    
+                display: block
+        &-call
+            background-size: cover
+            &::before
+                width: 100%
+    .callback
+        padding: 10% 0
+        text-align: center
+    
+    .reviews
+        &::before, &::after
+            display: none
+        
+    .partners
+        &.owl-carousel
+            .owl-nav
+                button
+                    &.owl-prev
+                        left: -10px
+                    &.owl-next
+                        right: -10px
+    
+    .map
+        & > ymaps
+            width: 100%
+            float: left
+
+@media only screen and (max-width: 768px)  
+    .header-composition 
+        .welcome 
+            .h1
+                font-size: 47px
+    
+    .header-contacts
+        font-size: 12px
+                
+    .button
+        padding: 12px 36px  
+    
+    .s-partners
+        .h2
+            margin: 0
+    
+    .footer-column
+        margin: 20px 0
+        
+    .footer-phone
+        font-size: 22px
+    
+@media only screen and (max-width: 576px)
+    .top-line 
+        padding-top: 24px
+        padding-left: 15px 
+        .logo
+            img
+                width: 120px
+        .phone
+            top: 30px
+            font-size: 18px
+            .fa
+                font-size: 26px
+    
+    .hamburger
+        padding: 0px 15px
+        
+    .header-flex
+        height: 68%
+    
+    .header-composition 
+        .welcome 
+            span
+                font-size: 12px
+            .h1
+                font-size: 39px
+            p
+                font-size: 12px
+                span
+                    margin: 0 5px
+    
+    .header-contacts
+        .phone
+            font-family: $default-font
+            text-align: left
+            span
+                padding-left: 6px
+    
+    .fotorama
+        background-color: transparent 
+        &__nav
+            &-wrap
+                position: relative
+                bottom: -10px    
+                padding: 0
+    
+    .callback-form
+        padding: 0 3%
+    
+    .footer-column
+        margin: 15px 0
+        &.footer-information
+            text-align: center
+        .footer-menu
+            padding: 0 40px
+        &.footer-contacts
+            padding: 0 25px
+    
+    .footer-social
+        display: inline-block
+        margin: 0
+        .social-list 
+            li 
+                margin-left: 6px
+    
+    .footer-phone
+        font-size: 19px
+        &::before
+            top: -4px
+                
+@media only screen and (max-width: 480px)
+    section
+        .h2
+            font-size: 25px
+    .s
+        &-about
+            p
+                font-size: 15px
+    .top-line 
+        .logo
+            img
+                width: 100px
+                
+    .header-composition 
+        .welcome 
+            span
+                font-size: 8px
+                margin-top: 15px
+            .h1 
+                font-size: 25px
+            p
+                font-size: 13px
+                font-weight: 300
+                span
+                    margin: 0 5px
+        &>p
+            margin-top: 24px
+    
+    .header-contacts
+        font-size: 11px
+    
+    .mm-listview 
+        .mm-listitem__text::before 
+            left: 3px
+    
+    .mm-navbar__title
+        padding-left: 0
+        img
+            width: 125px
+    
+    .carousel-services
+        &-content
+            .h3
+                font-size: 25px
+        .owl-nav button.owl-next, 
+        .owl-nav button.owl-prev
+            width: 50px
+            height: 50px
+
+    .reviews 
+        .owl-dots 
+            .owl-dot
+                display: none
