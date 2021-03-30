@@ -31,9 +31,6 @@ const newer = require('gulp-newer');
 // Подключаем модуль del
 const del = require('del');
 
-//Подключаем модуль gulp-gh-pages
-var ghPages = require('gulp-gh-pages');
-
 // Определяем логику работы Browsersync
 function browsersync() {
 	browserSync.init({ // Инициализация Browsersync
@@ -70,6 +67,7 @@ function styles() {
 	.pipe(dest('app/css/')) // Выгрузим результат в папку "app/css/"
 	.pipe(browserSync.stream()) // Сделаем инъекцию в браузер
 }
+
 function images() {
 	return src('app/img/src/**/*') // Берём все изображения из папки источника
 	.pipe(newer('app/img/dest/')) // Проверяем, было ли изменено (сжато) изображение ранее
@@ -87,7 +85,6 @@ function buildcopy() {
 		'app/js/**/*.min.js',
 		'app/img/dest/**/*',
 		'app/**/*.html',
-        'app/**/*.php',
         'app/fonts/**/*'
 		], { base: 'app' }) // Параметр "base" сохраняет структуру проекта при копировании
 	.pipe(dest('dist')) // Выгружаем в папку с финальной сборкой
@@ -95,12 +92,6 @@ function buildcopy() {
 
 function cleandist() {
 	return del('dist/**/*', { force: true }) // Удаляем всё содержимое папки "dist/"
-}
-
-//Деплой проекта на github pages
-function deploy(){
-	return src('dist/**/*')
-	.pipe(ghPages())
 }
 
 //Данная функция запускает наблюдение за изменениями файлов
@@ -131,9 +122,6 @@ exports.styles = styles;
  
 // Экспорт функции images() в таск images
 exports.images = images;
-
-// Экспорт функции deploy() в таск deploy
-exports.deploy  = deploy;
  
 // Экспортируем функцию cleanimg() как таск cleanimg
 exports.cleanimg = cleanimg;
