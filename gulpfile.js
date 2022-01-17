@@ -28,9 +28,6 @@ const imagecomp = require('compress-images');
 // Подключаем модуль del
 const del = require('del');
 
-//Подключаем модуль ghPages
-const ghPages = require('gulp-gh-pages');
-
 // Определяем логику работы Browsersync
 function browsersync() {
 	browserSync.init({ // Инициализация Browsersync
@@ -109,11 +106,6 @@ function buildFavicon(){
 	return src(['app/img/favicon/*']).pipe(dest('dist/img/favicon')) 
 }
 
-function deploy(){
-	return src('./dist/**/*')
-	.pipe(ghPages());
-}
-
 //Данная функция запускает наблюдение за изменениями файлов
 function startwatch() {
  
@@ -145,9 +137,6 @@ exports.images = images;
  
 // Экспортируем функцию cleanimg() как таск cleanimg
 exports.cleanimg = cleanimg;
-
-// Экспортируем функцию deploy() как таск deploy
-exports.deploy = deploy;
 
 // Создаём новый таск "build", который последовательно выполняет нужные операции
 exports.build = series(cleandist, styles, scripts, images, buildcopy, buildFavicon);
