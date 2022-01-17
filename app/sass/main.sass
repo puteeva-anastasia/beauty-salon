@@ -4,6 +4,13 @@
 @import "button"   
 @import "animation/pulse"
 
+input[type="text"]:-webkit-autofill
+    -webkit-box-shadow: 0 0 0 30px rgba(249,200,105,.92) inset
+    -webkit-text-fill-color: white !important
+    border: 1px solid #edc26f
+    
+
+
 body
     font-size: 16px
     line-height: 1.75
@@ -32,14 +39,14 @@ h1, h2, h3, h4, h5, h6
     text-transform: uppercase
 
 ::placeholder
-	color: #666
+    color: #666
 
 ::selection
-	background-color: $accent
-	color: #fff
+    background-color: $accent
+    color: #fff
 
 input, textarea
-	outline: none
+    outline: none
 
 .ishome
     .site-header
@@ -453,6 +460,8 @@ input, textarea, select,
             &.active
                 background-color: #FCD78F
                 color: #fff
+        &-content
+            padding: 0
             
     &-input
         &.dropdown-active
@@ -579,12 +588,13 @@ input, textarea, select,
         color: #95989A
         
 .s-partners
-	&.section-overlay
-		&::before
-			background-color: #fff
-	.h2
-		span
-			color: $accent  
+    &.section-overlay
+        &::before
+            background-color: #fff
+    .h2
+        span
+            color: $accent
+
 .partners
     &.owl-carousel
         position: relative

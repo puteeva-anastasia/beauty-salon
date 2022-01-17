@@ -14,7 +14,7 @@ const concat = require('gulp-concat');
 const uglify = require('gulp-uglify-es').default;
  
 // Подключаем модули gulp-sass
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
  
 // Подключаем Autoprefixer
 const autoprefixer = require('gulp-autoprefixer');
@@ -22,11 +22,8 @@ const autoprefixer = require('gulp-autoprefixer');
 // Подключаем модуль gulp-clean-css
 const cleancss = require('gulp-clean-css');
  
-// Подключаем gulp-imagemin для работы с изображениями
-const imagemin = require('gulp-imagemin');
- 
-// Подключаем модуль gulp-newer
-const newer = require('gulp-newer');
+// Подключаем compress-images для работы с изображениями
+const imagecomp = require('compress-images');
 
 // Подключаем модуль del
 const del = require('del');
@@ -68,11 +65,21 @@ function styles() {
 	.pipe(browserSync.stream()) // Сделаем инъекцию в браузер
 }
 
-function images() {
-	return src('app/img/src/**/*') // Берём все изображения из папки источника
-	.pipe(newer('app/img/dest/')) // Проверяем, было ли изменено (сжато) изображение ранее
-	.pipe(imagemin()) // Сжимаем и оптимизируем изображения
-	.pipe(dest('app/img/dest/')) // Выгружаем оптимизированные изображения в папку назначения
+async function images() {
+	imagecomp(
+		"app/images/src/**/*", // Берём все изображения из папки источника
+		"app/images/dest/", // Выгружаем оптимизированные изображения в папку назначения
+		{ compress_force: false, statistic: true, autoupdate: true }, false, // Настраиваем основные параметры
+		{ jpg: { engine: "mozjpeg", command: ["-quality", "75"] } }, // Сжимаем и оптимизируем изображеня
+		{ png: { engine: "pngquant", command: ["--quality=75-100", "-o"] } },
+		{ svg: { engine: "svgo", command: "--multipass" } },
+		{ gif: { engine: "gifsicle", command: ["--colors", "64", "--use-col=web"] } },
+		function (err, completed) { // Обновляем страницу по завершению
+			if (completed === true) {
+				browserSync.reload()
+			}
+		}
+	)
 }
 
 function cleanimg() {
@@ -85,7 +92,7 @@ function buildcopy() {
 		'app/js/**/*.min.js',
 		'app/img/dest/**/*',
 		'app/**/*.html',
-        'app/fonts/**/*',
+		'app/fonts/**/*',
 		'app/.htaccess'
 		], { base: 'app' }) // Параметр "base" сохраняет структуру проекта при копировании
 	.pipe(dest('dist')) // Выгружаем в папку с финальной сборкой
