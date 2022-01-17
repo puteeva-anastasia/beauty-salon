@@ -81,9 +81,6 @@ input, textarea
             left: -25px
             color: #555555
             font-size: 32px
-        span
-            color: inherit
-            text-decoration: none
         
 .hamburger
     position: absolute
@@ -260,6 +257,10 @@ body.mm-wrapper_opened
     .phone
         font-family: $font-firasans
         text-align: center
+
+        span
+            color: inherit
+            text-decoration: none
         
 $colors: $blue, $red, $accent
 @for $i from 1 through length($colors)
@@ -717,6 +718,8 @@ input, textarea, select,
         font-family: $font-firasans
         padding-top: 5px
         display: block
+        color: inherit
+        text-decoration: none
         &::before
             content: '\f10b'
             left: 3px
