@@ -28,6 +28,9 @@ const imagecomp = require('compress-images');
 // Подключаем модуль del
 const del = require('del');
 
+//Подключаем модуль ghPages
+const ghPages = require('gulp-gh-pages');
+
 // Определяем логику работы Browsersync
 function browsersync() {
 	browserSync.init({ // Инициализация Browsersync
@@ -67,8 +70,8 @@ function styles() {
 
 async function images() {
 	imagecomp(
-		"app/images/src/**/*", // Берём все изображения из папки источника
-		"app/images/dest/", // Выгружаем оптимизированные изображения в папку назначения
+		"app/img/src/**/*", // Берём все изображения из папки источника
+		"app/img/dest/", // Выгружаем оптимизированные изображения в папку назначения
 		{ compress_force: false, statistic: true, autoupdate: true }, false, // Настраиваем основные параметры
 		{ jpg: { engine: "mozjpeg", command: ["-quality", "75"] } }, // Сжимаем и оптимизируем изображеня
 		{ png: { engine: "pngquant", command: ["--quality=75-100", "-o"] } },
@@ -100,6 +103,15 @@ function buildcopy() {
 
 function cleandist() {
 	return del('dist/**/*', { force: true }) // Удаляем всё содержимое папки "dist/"
+}
+
+function buildFavicon(){
+	return src(['app/img/favicon/*']).pipe(dest('dist/img/favicon')) 
+}
+
+function deploy(){
+	return src('./dist/**/*')
+	.pipe(ghPages());
 }
 
 //Данная функция запускает наблюдение за изменениями файлов
@@ -134,8 +146,11 @@ exports.images = images;
 // Экспортируем функцию cleanimg() как таск cleanimg
 exports.cleanimg = cleanimg;
 
+// Экспортируем функцию deploy() как таск deploy
+exports.deploy = deploy;
+
 // Создаём новый таск "build", который последовательно выполняет нужные операции
-exports.build = series(cleandist, styles, scripts, images, buildcopy);
+exports.build = series(cleandist, styles, scripts, images, buildcopy, buildFavicon);
  
 // Экспортируем дефолтный таск с нужным набором функций
 exports.default = parallel(styles, scripts, browsersync, startwatch);

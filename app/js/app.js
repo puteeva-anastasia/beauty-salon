@@ -48,7 +48,6 @@ $(function () {
         items: 1,
         smartSpeed: 700,
         autoplay: true,
-        autoplayTimeout: 25000,
         autoplayHoverPause: true
     });
 

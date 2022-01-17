@@ -4,12 +4,13 @@
 @import "button"   
 @import "animation/pulse"
 
+input
+    appearance: none
+
 input[type="text"]:-webkit-autofill
     -webkit-box-shadow: 0 0 0 30px rgba(249,200,105,.92) inset
     -webkit-text-fill-color: white !important
     border: 1px solid #edc26f
-    
-
 
 body
     font-size: 16px
@@ -329,6 +330,10 @@ $colors: $blue, $red, $accent
                     background-color: darken(#fff, 5%)
                 &.disabled
                     display: none
+            .owl-prev, .owl-next
+                display: flex
+                justify-content: center
+                align-items: center
             .owl-prev
                 left: 0
             .owl-next
@@ -514,6 +519,7 @@ input, textarea, select,
     .button
         margin-top: 30px
         width: auto
+        display: block
         color: #444
         &:hover, &:focus
             color: rgba(#000, .6)
